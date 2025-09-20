@@ -30,8 +30,8 @@ public:
 
 class Wizard : public Entity {
 private:
-	int mana;
-	int health;
+	int mana; // Кол-во маны
+	int health; // Здоровье
 public:
 	Wizard(float x_pos, float y_pos, std::string w_name, int w_mana, int w_health)
 		: Entity(x_pos, y_pos, w_name), mana(w_mana), health(w_health) {}
@@ -113,7 +113,26 @@ public:
 	}
 	
 };
+class Location {
+private:
+	std::string name; // Название локации
+	int resource_count; // Кол-во ресурсов;
+public:
+	Location(std::string loc_name, int res_count)
+		: name(loc_name), resource_count(res_count) {}
+	void addResource() {
+		resource_count++;
+		std::cout << "Добавлен ресурс в " << name << std::endl;
+	}
 
+	void Print() const {
+		std::cout << "Локация: " << name << ",ресурсы: " << resource_count << std::endl;
+	}
+
+	int getResourceCount() const {
+		return resource_count;
+	}
+};
 
 
 int main()
