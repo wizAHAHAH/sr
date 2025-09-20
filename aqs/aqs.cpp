@@ -73,6 +73,30 @@ public:
 	}
 };
 
+class Spell {
+private:
+	std::string name; // Название заклинания
+	int mana_cost; // Стоимость маны
+public:
+	Spell(std::string s_name, int cost) : name(s_name), mana_cost(cost){}
+	void Use(Wizard& wizard) {
+		if (wizard.getMana() >= mana_cost) {
+			std::cout << wizard.getName() << " использует способность: " << name << std::endl;
+		}
+	}
+
+	int getManaCost() const {
+		return mana_cost;
+	}
+	std::string getName() const {
+		return name;
+	}
+
+
+};
+
+
+
 int main()
 {
  
