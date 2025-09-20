@@ -53,6 +53,26 @@ public:
 	}
 };
 
+class Resource : public Entity {
+private:
+	std::string type; // Тип ресурса
+	int count; // Количество
+public:
+	Resource(float x_pos, float y_pos, std::string r_name, std::string r_type, int cnt)
+		: Entity(x_pos, y_pos, r_name), type(r_type), count(cnt) {}
+	
+	void collect() {
+		count = 0;
+		std::cout << name << " собрано!" << std::endl;
+	}
+	std::string getType() const {
+		return type;
+	}
+	int getCount() const {
+		return count;
+	}
+};
+
 int main()
 {
  
