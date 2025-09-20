@@ -132,6 +132,24 @@ public:
 	int getResourceCount() const {
 		return resource_count;
 	}
+
+};
+
+class Minion : public Entity {
+private:
+	int health;
+	std::string owner;
+public:
+	Minion(float x_pos, float y_pos, std::string m_name, int m_health, std::string w_name)
+		: Entity(x_pos, y_pos, m_name), health(m_health), owner(w_name) {}
+	
+	void Follow() {
+		std::cout << name << " следует за " << owner << std::endl;
+	}
+	
+	int getHealth() const {
+		return health;
+	}
 };
 
 
