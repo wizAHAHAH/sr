@@ -91,8 +91,27 @@ public:
 	std::string getName() const {
 		return name;
 	}
+};
 
+class Inventory {
+private:
+	int herb_count; // Кол-во трав
+	int max_capacity; // Макс вместимость
+public:
+	Inventory(int cap) : herb_count(0), max_capacity(cap) {}
+	void addHerb(int cnt) {
+		herb_count += cnt;
+		if (herb_count > max_capacity)
+			herb_count = max_capacity;
+	}
 
+	int getHerbCount() const {
+		return herb_count;
+	}
+	bool isFull() const {
+		return herb_count >= max_capacity;
+	}
+	
 };
 
 
