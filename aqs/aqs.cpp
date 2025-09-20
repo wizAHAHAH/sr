@@ -137,8 +137,8 @@ public:
 
 class Minion : public Entity {
 private:
-	int health;
-	std::string owner;
+	int health; // Здоровье
+	std::string owner; // Владелец
 public:
 	Minion(float x_pos, float y_pos, std::string m_name, int m_health, std::string w_name)
 		: Entity(x_pos, y_pos, m_name), health(m_health), owner(w_name) {}
@@ -152,9 +152,47 @@ public:
 	}
 };
 
+// Создание персонажа
+Wizard CreateWizard(float x, float y, std::string name, int mana, int health) {
+	return(x, y, name, mana, health);
+}
+
+// Исопльзование заклинания
+void useSpell(Wizard& wizard, Spell& spell) {
+	spell.Use(wizard);
+}
+
+// Сбор ресурса
+void collectResource(Wizard& wizard, Resource& resource) {
+	std::cout << wizard.getName() << " собирает " << resource.getType() << std::endl;
+	resource.collect();
+}
+
+// Добавление ресурса в инвентарь
+void addToInventory(Inventory& inv, Resource& res) {
+	inv.addHerb(res.getCount());
+}
+
+Minion CreateMinion(float x, float y, std::string name, int health, std::string owner) {
+	return Minion(x, y, name, health, owner);
+}
 
 int main()
 {
- 
+	Wizard staticWizard(10, 20, "Shadow Wizard", 50, 100);
+	Resource staticResource(30, 40, "Трава1", "трава", 5);
+	Inventory staticInventory(10);
+	Spell staticSpell("Призыв", 10);
+	Location staticLocation("Замок", 2);
+	Minion staticMinion(50, 60, "Скелет", 20, "Shadow Wizard");
+
+	staticWizard.Print();
+	staticWizard.Move(5, 5);
+	staticWizard.Print();
+	collectResource(staticWizard, staticResource);
+	addToInventory(staticInventory, staticResource);
+	useSpell(staticWizard, staticSpell);
+	staticLocation.Print();
+	staticMinion.Follow();
 }
 
